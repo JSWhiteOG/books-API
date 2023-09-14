@@ -13,7 +13,7 @@ function show (data) {
          <img src={data.books.cover} alt={data.books.title} height={600} width={400}/>
         </div>
         <div className="col-sm-8">
-        <h2>"{data.books.description}"</h2>
+        <h2>{data.books.description}</h2>
         </div>
         <div className="col-sm-8">
           <h3>This book was published in the year {data.books.Published_Year}.</h3>
@@ -22,10 +22,20 @@ function show (data) {
         </div>
       
 
+        <a href={`/books/${data.id}/edit`} className="btn btn-primary"> 
+             Edit
+        </a>
+
+        <form method="POST" action={`/books/${data.id}?_method=DELETE`}> 
+            <button type="submit" className="btn btn-danger">
+               Delete
+            </button>
+       </form> 
        
       </main>
     </Def>
 )
+
 }
-console.log
+
 module.exports = show

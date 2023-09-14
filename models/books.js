@@ -19,7 +19,8 @@ const bookSchema = new mongoose.Schema(
       type:Number, 
       min: 0,
       required:true
-  },
+  },}
 
-  })
+  )
+  
 module.exports = mongoose.model('Books', bookSchema)

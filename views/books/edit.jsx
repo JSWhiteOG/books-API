@@ -1,23 +1,14 @@
 const React = require('react')
-const Def = require('../default')
+const Def = require('../default.jsx')
 
-function new_form (data) {
-    let message = '' 
-      if(data.message) {
-       message = (
-          <h3 className="alert-danger">
-           {data.message}
-          </h3>
-        )
-      }
-      return (
+function edit_form (data) {
+    return (
         <Def>
           <main>
-            <h1>Request an additional book</h1>
-            {message}
-            <form method="POST" action="/books">
-              
-              <div className="column">
+            <h1>Edit an existing place</h1>
+          <form method="POST" action={`/books/${data.books.id}?_method=PUT`}>
+<div className="row">
+  
   {/* Title */}
   <div className="col-sm-6 col-md-4 col-lg-3"> <div className="form-group">
     <label htmlFor="title">Book's Name</label>
@@ -28,10 +19,11 @@ function new_form (data) {
     required />
   </div></div>
   
-  {/* Cover */}
-  <div className="col-lg-3"><div className="form-group">
+    {/* Cover */}
+    <div className="col-lg-3"><div className="form-group">
     <label htmlFor="cover">Image of the Cover</label>
     <input 
+    defaultValue={'/images/question.jpg'}
     className="form-control" 
     id="cover" 
     name="cover"/>
@@ -41,6 +33,7 @@ function new_form (data) {
   <div className="col-lg-3"><div className="form-group">
     <label htmlFor="description">Summary of the book</label>
     <input 
+    defaultValue={'No summary has been made yet'}
     className="form-control" 
     id="description" 
     name="description" />
@@ -62,24 +55,18 @@ function new_form (data) {
   <div className="col-sm-1"><div className="form-group">
     <label htmlFor="quantity">How many are available?</label>
       <input 
+      defaultValue={0}
      type="number"
      className="form-control" 
      id="quantity" 
      name="quantity" 
      />
   </div></div>
-
-</div>
-
+  </div>
+  
  
-  
-  
-  
-
-  <input className="btn btn-primary" type="submit" value="Add Place" />
-  
-
-</form>
+  <input className="btn btn-primary" type="submit" value="Update Book info" />
+</form> 
 
            
 
@@ -88,4 +75,4 @@ function new_form (data) {
     )
 }
 
-module.exports = new_form
+module.exports = edit_form
